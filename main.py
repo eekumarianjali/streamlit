@@ -4,7 +4,7 @@ import pickle
 
 
 # Load the trained model
-with open('trained_model_lr.pkl', 'rb') as model_file:
+with open('trained_model.pkl', 'rb') as model_file:
     trained_model = pickle.load(model_file)
 
 st.title('Titanic Survival Prediction')
@@ -31,11 +31,8 @@ if st.button('Predict'):
     predicted_class = trained_model.predict(input_features_array)
 
     print(predicted_class)
-
-
-if predicted_class[0]==0:
-    print('person will die')
-else:
-    print('The Person will Survive.')
-
-    st.write(f"Predicted class: {predicted_class[0]}")
+    if predicted_class[0]==0:
+        print('person will die')
+    else:
+        print('The person will survive')
+    st.write(f"predicted class: {predicted_class[0]}")
